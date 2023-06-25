@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Properties;
 
 public class PartitionerConsumer {
+    private static final String TOPIC_TO_SUBSCRIBE = "partitioner-topic-test";
     public static void main(String[] args) {
         subscribeOurMessages();
     }
@@ -18,7 +19,7 @@ public class PartitionerConsumer {
         Consumer consumer = createConsumer();
 
         // subscribe
-        consumer.subscribe(Collections.singletonList("partitioner-topic-test"));
+        consumer.subscribe(Collections.singletonList(TOPIC_TO_SUBSCRIBE));
 
         // messages records
         ConsumerRecords<String, String> poll = consumer.poll(Duration.ofMillis(10000));

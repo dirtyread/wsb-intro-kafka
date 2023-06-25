@@ -16,21 +16,21 @@ public class PartitionerProducer {
     private static final String VALUE = "Zapisane na 1 partycji...";
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-        sendHelloWorldToKafkaTopic();
+        sendMessageToKafkaTopic();
     }
 
-    private static void sendHelloWorldToKafkaTopic() throws InterruptedException, ExecutionException {
-        // producenta
+    private static void sendMessageToKafkaTopic() throws InterruptedException, ExecutionException {
+        // create producer
         try (Producer<String, String> producer = createProducer()) {
 
-            // rekodr
+            // prepare record to send
             ProducerRecord<String, String> producerRecord = new ProducerRecord<>(
                     TOPIC,
                     KEY,
                     VALUE
             );
 
-            // send
+            // send action
             System.out.println(producer.send(producerRecord).get());
         }
     }
